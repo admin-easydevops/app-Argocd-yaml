@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-argocd-yaml-application
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: register-app-project
+  source:
+    repoURL: https://github.com/admin-easydevops/app-Argocd-yaml.git
+    targetRevision: HEAD
+    path: register-app
+  destination:
+    server: https://1097A01C2C9EAAD63D67F43984A767AD.sk1.us-east-2.eks.amazonaws.com
+    namespace: register-app
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
