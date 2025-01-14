@@ -23,7 +23,7 @@ pipeline {
 
         stage("Checkout from SCM") {
                steps {
-                   git branch: 'feature/jenkins', credentialsId: 'github-PAT', url: 'https://github.com/admin-easydevops/app-Argocd-yaml.git'
+                   git branch: 'feature/jenkins', credentialsId: 'github-PAT', url: 'https://github.com/admin-easydevops/app-argocd-yaml.git'
                }
         }
 
@@ -46,7 +46,7 @@ pipeline {
                    git commit -m "Updated Deployment Manifest"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github-PAT', gitToolName: 'Default')]) {
-                  sh "git push https://github.com/admin-easydevops/app-Argocd-yaml.git origin feature/jenkins"
+                  sh "git push https://github.com/admin-easydevops/app-argocd-yaml.git origin feature/jenkins"
                 }
             }
         }
